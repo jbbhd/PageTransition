@@ -1,0 +1,3 @@
+${PODS_ROOT}/Target Support Files/Pods-PageTransitionExampleUITests/Pods-PageTransitionExampleUITests-frameworks.sh
+${BUILT_PRODUCTS_DIR}/PageTransition/PageTransition.framework
+${BUILT_PRODUCTS_DIR}/iOSSnapshotTestCase/FBSnapshotTestCase.framework

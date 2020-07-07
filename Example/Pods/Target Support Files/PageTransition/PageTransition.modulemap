@@ -1,0 +1,6 @@
+framework module PageTransition {
+  umbrella header "PageTransition-umbrella.h"
+
+  export *
+  module * { export * }
+}

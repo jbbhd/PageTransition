@@ -1,15 +1,12 @@
 # PageTransition
 
-[![CI Status](https://img.shields.io/travis/jbushyhead/PageTransition.svg?style=flat)](https://travis-ci.org/jbushyhead/PageTransition)
-[![Version](https://img.shields.io/cocoapods/v/PageTransition.svg?style=flat)](https://cocoapods.org/pods/PageTransition)
-[![License](https://img.shields.io/cocoapods/l/PageTransition.svg?style=flat)](https://cocoapods.org/pods/PageTransition)
-[![Platform](https://img.shields.io/cocoapods/p/PageTransition.svg?style=flat)](https://cocoapods.org/pods/PageTransition)
+## Summary
 
-## Example
+A "page flip" transition using Core Animation. When animated, a single page of new content falls in from the left edge of the frame. Can be customized to flip from left or right, forward or backward. Designed for `UIViewController` transitions. Includes the `CALayer` subclass that performs the animation, a custom `UIView` with that layer as backing layer, and a premade `UIViewControllerAnimatedTransitioning` object.
 
-To run the example project, clone the repo, and run `pod install` from the Example directory first.
+See `PDPageTransitionLayer.swift` for more documentation. 
 
-## Requirements
+![Page Transition Example](https://i.imgur.com/iX57jQb.gif)
 
 ## Installation
 
@@ -19,10 +16,6 @@ it, simply add the following line to your Podfile:
 ```ruby
 pod 'PageTransition'
 ```
-
-## Author
-
-jbushyhead, jesse.bushyhead@gmail.com
 
 ## License
 
