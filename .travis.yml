@@ -6,5 +6,12 @@ before_install:
 - gem install cocoapods
 - pod install --project-directory=Example
 script:
-- set -o pipefail && xcodebuild test -enableCodeCoverage YES -workspace       Example/PageTransition.xcworkspace -scheme PageTransitionExample -iphonesimulator13.5        ONLY_ACTIVE_ARCH=NO | xcpretty
+- set -o pipefail &&
+  xcodebuild test
+  -enableCodeCoverage YES
+  -workspace Example/PageTransitionExample.xcworkspace
+  -scheme PageTransitionExample
+  -destination 'platform=iOS Simulator,name=iPhone 11 Pro Max,OS=13.5'
+  ONLY_ACTIVE_ARCH=NO
+  | xcpretty
 - pod lib lint

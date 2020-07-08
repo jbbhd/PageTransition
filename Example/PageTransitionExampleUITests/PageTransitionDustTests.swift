@@ -11,7 +11,7 @@ class PageTranitionDustTests: FBSnapshotTestCase {
     
     override func setUp() {
         super.setUp()
-        recordMode = true
+        recordMode = false
     }
 
     func testDustFromLeftForward() {
