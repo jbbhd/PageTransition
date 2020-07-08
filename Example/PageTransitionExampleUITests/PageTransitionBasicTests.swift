@@ -13,8 +13,10 @@ private extension String {
 
 class PageTranitionBasicTests: FBSnapshotTestCase {
 
-    let timesToTest: [String] = [.pt001, .pt250, .pt500, .pt750, .pt999]
+    private let timesToTest: [String] = [.pt001, .pt250, .pt500, .pt750, .pt999]
 
+    private let tolerance: CGFloat = 0.01
+    
     override func setUp() {
         super.setUp()
         recordMode = false
@@ -36,7 +38,7 @@ class PageTranitionBasicTests: FBSnapshotTestCase {
             let image = XCUIScreen.main.screenshot().image
             imageView.frame.size = image.size
             imageView.image = image
-            FBSnapshotVerifyView(imageView, identifier: time)
+            FBSnapshotVerifyView(imageView, identifier: time, overallTolerance: tolerance)
         }
         app.terminate()
     }
@@ -56,7 +58,7 @@ class PageTranitionBasicTests: FBSnapshotTestCase {
             let image = XCUIScreen.main.screenshot().image
             imageView.frame.size = image.size
             imageView.image = image
-            FBSnapshotVerifyView(imageView, identifier: time)
+            FBSnapshotVerifyView(imageView, identifier: time, overallTolerance: tolerance)
         }
         app.terminate()
     }
@@ -76,7 +78,7 @@ class PageTranitionBasicTests: FBSnapshotTestCase {
             let image = XCUIScreen.main.screenshot().image
             imageView.frame.size = image.size
             imageView.image = image
-            FBSnapshotVerifyView(imageView, identifier: time)
+            FBSnapshotVerifyView(imageView, identifier: time, overallTolerance: tolerance)
         }
         app.terminate()
     }
@@ -96,7 +98,7 @@ class PageTranitionBasicTests: FBSnapshotTestCase {
             let image = XCUIScreen.main.screenshot().image
             imageView.frame.size = image.size
             imageView.image = image
-            FBSnapshotVerifyView(imageView, identifier: time)
+            FBSnapshotVerifyView(imageView, identifier: time, overallTolerance: tolerance)
         }
         app.terminate()
     }

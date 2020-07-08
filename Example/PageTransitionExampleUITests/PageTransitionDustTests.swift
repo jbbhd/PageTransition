@@ -9,6 +9,8 @@ class PageTranitionDustTests: FBSnapshotTestCase {
     
     private let dustSizes = [TestLaunchArgument.DustSize.large, TestLaunchArgument.DustSize.medium, TestLaunchArgument.DustSize.small]
     
+    private let tolerance: CGFloat = 0.25
+    
     override func setUp() {
         super.setUp()
         recordMode = false
@@ -30,7 +32,7 @@ class PageTranitionDustTests: FBSnapshotTestCase {
             let imageView = UIImageView()
             imageView.frame.size = image.size
             imageView.image = image
-            self.FBSnapshotVerifyView(imageView, identifier: dustSize, overallTolerance: 0.25)
+            self.FBSnapshotVerifyView(imageView, identifier: dustSize, overallTolerance: tolerance)
             
             app.terminate()
         }
@@ -52,7 +54,7 @@ class PageTranitionDustTests: FBSnapshotTestCase {
             let imageView = UIImageView()
             imageView.frame.size = image.size
             imageView.image = image
-            self.FBSnapshotVerifyView(imageView, identifier: dustSize, overallTolerance: 0.25)
+            self.FBSnapshotVerifyView(imageView, identifier: dustSize, overallTolerance: tolerance)
             
             app.terminate()
         }
