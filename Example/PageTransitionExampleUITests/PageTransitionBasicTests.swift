@@ -15,8 +15,8 @@ class PageTranitionBasicTests: FBSnapshotTestCase {
 
     private let timesToTest: [String] = [.pt001, .pt250, .pt500, .pt750, .pt999]
 
-    private let tolerance: CGFloat = 0.01
-    
+    private let overallTolerance: CGFloat = 0.005
+        
     override func setUp() {
         super.setUp()
         recordMode = false
@@ -38,7 +38,7 @@ class PageTranitionBasicTests: FBSnapshotTestCase {
             let image = XCUIScreen.main.screenshot().image
             imageView.frame.size = image.size
             imageView.image = image
-            FBSnapshotVerifyView(imageView, identifier: time, overallTolerance: tolerance)
+            FBSnapshotVerifyView(imageView, identifier: time, overallTolerance: overallTolerance)
         }
         app.terminate()
     }
@@ -58,7 +58,7 @@ class PageTranitionBasicTests: FBSnapshotTestCase {
             let image = XCUIScreen.main.screenshot().image
             imageView.frame.size = image.size
             imageView.image = image
-            FBSnapshotVerifyView(imageView, identifier: time, overallTolerance: tolerance)
+            FBSnapshotVerifyView(imageView, identifier: time, overallTolerance: overallTolerance)
         }
         app.terminate()
     }
@@ -78,7 +78,7 @@ class PageTranitionBasicTests: FBSnapshotTestCase {
             let image = XCUIScreen.main.screenshot().image
             imageView.frame.size = image.size
             imageView.image = image
-            FBSnapshotVerifyView(imageView, identifier: time, overallTolerance: tolerance)
+            FBSnapshotVerifyView(imageView, identifier: time, overallTolerance: overallTolerance)
         }
         app.terminate()
     }
@@ -98,7 +98,7 @@ class PageTranitionBasicTests: FBSnapshotTestCase {
             let image = XCUIScreen.main.screenshot().image
             imageView.frame.size = image.size
             imageView.image = image
-            FBSnapshotVerifyView(imageView, identifier: time, overallTolerance: tolerance)
+            FBSnapshotVerifyView(imageView, identifier: time, overallTolerance: overallTolerance)
         }
         app.terminate()
     }

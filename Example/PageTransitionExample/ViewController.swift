@@ -14,6 +14,8 @@ class ViewController: UIViewController {
     
     private var progressSteps: [CFTimeInterval] = []
     
+    private var pauseAfter: TimeInterval = 0.0
+    
     private var testMode: TestMode?
     
     private var pauseTime: CFTimeInterval!
@@ -62,6 +64,7 @@ class ViewController: UIViewController {
         case .closing:
             progressSteps = ProcessInfo.processInfo.arguments.compactMap({ CFTimeInterval($0) }).sorted()
         case .dust:
+            pauseAfter = ProcessInfo.processInfo.arguments.compactMap({ CFTimeInterval($0) }).first ?? pauseAfter
             let dustSize: PTPageTransitionLayer.DustCloudSize = {
                 if ProcessInfo.processInfo.arguments.contains(TestLaunchArgument.DustSize.small) {
                     return .small
@@ -110,15 +113,31 @@ class ViewController: UIViewController {
             pauseTime = transitionView.pageTransitionLayer.convertTime(CACurrentMediaTime(), from: nil)
             transitionView.pageTransitionLayer.timeOffset = pauseTime + transitionView.pageTransitionLayer.closingDuration
             transitionView.pageTransitionLayer.speed = 1.0
+            DispatchQueue.main.asyncAfter(deadline: .now() + pauseAfter) {
+                func getEmitterLayers(in layer: CALayer) -> [CAEmitterLayer] {
+                    var result: [CAEmitterLayer] = []
+                    if let emitter = layer as? CAEmitterLayer {
+                        result.append(emitter)
+                    }
+                    guard let sublayers = layer.sublayers else { return result }
+                    result += sublayers.map({ getEmitterLayers(in: $0) }).flatMap({ $0 })
+                    return result
+                }
+                for emitterLayer in getEmitterLayers(in: self.transitionView.pageTransitionLayer) {
+                    emitterLayer.pause()
+                }
+            }
         case .none:
             transitionView.pageTransitionLayer.addAnimations()
         }
     }
     
     @objc func didTapNext() {
+        guard testMode == .closing else { return }
         guard progressSteps.count > 0 else { return }
         transitionView.pageTransitionLayer.timeOffset = pauseTime + progressSteps[0]*transitionView.pageTransitionLayer.totalDuration
         progressSteps = Array(progressSteps.dropFirst())
     }
 }
+
 

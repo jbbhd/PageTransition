@@ -68,7 +68,7 @@
          </EnvironmentVariable>
          <EnvironmentVariable
             key = "IMAGE_DIFF_DIR"
-            value = "$(SOURCE_ROOT)/PageTransitionExampledUITests/Images/FailureDiffs"
+            value = "$(SOURCE_ROOT)/PageTransitionExampleUITests/Images/FailureDiffs"
             isEnabled = "YES">
          </EnvironmentVariable>
       </EnvironmentVariables>

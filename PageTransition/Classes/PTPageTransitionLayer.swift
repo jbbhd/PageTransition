@@ -35,7 +35,7 @@ public class PTPageTransitionLayer: CALayer, CAAnimationDelegate {
     public var isReversed = false
     
     /// Whether to add dust clouds at the end of a forward closing animation.
-    public var addClosingDustIfForward = false
+    public var addClosingDustIfForward = true
     
     /// The size of the ending dust cloud.
     public var dustCloudSize: DustCloudSize = .small
@@ -90,13 +90,13 @@ public class PTPageTransitionLayer: CALayer, CAAnimationDelegate {
     public let shadowOpacityEndValue: Float = 1.0
     
     /// The values for the dust birth rate keframe animation. 100% for the first keyframe and 0% for the second.
-    public let dustBirthRateValues: [CGFloat] = [0.5, 0.0]
+    public let dustBirthRateValues: [CGFloat] = [5.0, 0.0]
     
-    /// The key times for the dust birth rate keyframe animation. 1/4th of a second for the first keyframe and 1 second for the second.
-    public let dustBirthRateKeyTimes: [CFTimeInterval] = [0.25, 1.0]
+    /// The key times for the dust birth rate keyframe animation.
+    public let dustBirthRateKeyPercentStartTimes: [CFTimeInterval] = [0.0, 0.01, 1.0]
     
     /// The total birth rate animation duration.
-    public var dustBirthRateDuration: CFTimeInterval { dustBirthRateKeyTimes.reduce(0, +) }
+    public var dustBirthRateDuration: CFTimeInterval = 1.0
     
     /// Whether closing dust should be added.
     private var addClosingDust: Bool {
@@ -238,7 +238,7 @@ public class PTPageTransitionLayer: CALayer, CAAnimationDelegate {
             dustCell.contents = dustCloudImage?.cgImage
             dustCell.birthRate = 1.0
             dustCell.lifetime = 3.0
-            dustCell.alphaSpeed = -0.75
+            dustCell.alphaSpeed = -0.95
             dustCell.velocity = 25.0
             dustCell.velocityRange = 15.0
             dustCell.spinRange = CGFloat.pi/4
@@ -377,8 +377,9 @@ public class PTPageTransitionLayer: CALayer, CAAnimationDelegate {
 
         let dustBirthRate: CAKeyframeAnimation = {
             let dustBirthRate = CAKeyframeAnimation(keyPath: #keyPath(CAEmitterLayer.birthRate))
-            dustBirthRate.values = dustBirthRateValues
-            dustBirthRate.keyTimes = dustBirthRateKeyTimes as [NSNumber]
+            dustBirthRate.calculationMode = .discrete
+            dustBirthRate.values = dustBirthRateValues as [NSNumber]
+            dustBirthRate.keyTimes = dustBirthRateKeyPercentStartTimes as [NSNumber]
             dustBirthRate.duration = dustBirthRateDuration
             dustBirthRate.beginTime = CACurrentMediaTime() + closingDuration
             return dustBirthRate
