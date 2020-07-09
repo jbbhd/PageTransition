@@ -9,14 +9,14 @@ class PageTranitionDustTests: FBSnapshotTestCase {
         
     private let overallTolerance: CGFloat = 0.15
     
-    private let playTime: TimeInterval = 0.15
+    private let playTime: TimeInterval = 0.2
     
     override func setUp() {
         super.setUp()
         recordMode = false
     }
 
-    func testLargeDustFromLeftForward() {
+    func testFromLeftWithLargeDust() {
         let app = XCUIApplication()
         app.launchArguments.append(contentsOf: [
             TestLaunchArgument.TestMode.dust,
@@ -43,7 +43,7 @@ class PageTranitionDustTests: FBSnapshotTestCase {
         self.waitForExpectations(timeout: 2.0, handler: nil)
     }
     
-    func testMediumDustFromLeftForward() {
+    func testFromLeftWithMediumDust() {
         let app = XCUIApplication()
         app.launchArguments.append(contentsOf: [
             TestLaunchArgument.TestMode.dust,
@@ -70,7 +70,7 @@ class PageTranitionDustTests: FBSnapshotTestCase {
         self.waitForExpectations(timeout: 2.0, handler: nil)
     }
     
-    func testSmallDustFromLeftForward() {
+    func testFromLeftWithSmallDust() {
         let app = XCUIApplication()
         app.launchArguments.append(contentsOf: [
             TestLaunchArgument.TestMode.dust,
@@ -97,7 +97,7 @@ class PageTranitionDustTests: FBSnapshotTestCase {
         self.waitForExpectations(timeout: 2.0, handler: nil)
     }
     
-    func testLargeDustFromRightForward() {
+    func testFromRightWithLargeDust() {
         let app = XCUIApplication()
         app.launchArguments.append(contentsOf: [
             TestLaunchArgument.TestMode.dust,
@@ -124,7 +124,7 @@ class PageTranitionDustTests: FBSnapshotTestCase {
         self.waitForExpectations(timeout: 2.0, handler: nil)
     }
     
-    func testMediumDustFromRightForward() {
+    func testFromRightWithMediumDust() {
         let app = XCUIApplication()
         app.launchArguments.append(contentsOf: [
             TestLaunchArgument.TestMode.dust,
@@ -151,7 +151,7 @@ class PageTranitionDustTests: FBSnapshotTestCase {
         self.waitForExpectations(timeout: 2.0, handler: nil)
     }
     
-    func testSmallDustFromRightForward() {
+    func testFromRightWithSmallDust() {
         let app = XCUIApplication()
         app.launchArguments.append(contentsOf: [
             TestLaunchArgument.TestMode.dust,

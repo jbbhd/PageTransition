@@ -35,7 +35,7 @@ public class PTPageTransitionLayer: CALayer, CAAnimationDelegate {
     public var isReversed = false
     
     /// Whether to add dust clouds at the end of a forward closing animation.
-    public var addClosingDustIfForward = true
+    public var addClosingDustIfForward = false
     
     /// The size of the ending dust cloud.
     public var dustCloudSize: DustCloudSize = .small
