@@ -15,7 +15,7 @@ class PageTranitionBasicTests: FBSnapshotTestCase {
 
     private let timesToTest: [String] = [.pt001, .pt250, .pt500, .pt750, .pt999]
 
-    private let overallTolerance: CGFloat = 0.005
+    private let overallTolerance: CGFloat = 0.01
         
     override func setUp() {
         super.setUp()
