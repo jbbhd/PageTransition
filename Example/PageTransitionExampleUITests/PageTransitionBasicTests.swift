@@ -10,7 +10,6 @@ private extension String {
     static let pt999 = "0.999"
 }
 
-
 class PageTranitionBasicTests: FBSnapshotTestCase {
 
     private let timesToTest: [String] = [.pt001, .pt250, .pt500, .pt750, .pt999]

@@ -6,10 +6,10 @@ import Foundation
 class PageTranitionDustTests: FBSnapshotTestCase {
     
     private let sharedLayer = PTPageTransitionLayer()
-        
-    private let overallTolerance: CGFloat = 0.15
+            
+    private let playTime: TimeInterval = 0.15
     
-    private let playTime: TimeInterval = 0.2
+    private let overallTolerance: CGFloat = 0.15
     
     override func setUp() {
         super.setUp()
